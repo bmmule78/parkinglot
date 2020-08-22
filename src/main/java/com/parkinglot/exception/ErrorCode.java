@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.parkinglot.constants.exception;
+package com.parkinglot.exception;
 
 /**
  * @author Balasaheb
