@@ -4,6 +4,8 @@ import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author Balasaheb
@@ -12,18 +14,20 @@ import java.io.ObjectOutput;
 public abstract class Vehicle implements Externalizable
 {
 	private String	registrationNo	= null;
-	private String	color			= null;
+	private String	color			= null;	
+	private LocalDateTime parkingtime = LocalDateTime.now(); 
 	
 	public Vehicle(String registrationNo, String color)
 	{
 		this.registrationNo = registrationNo;
 		this.color = color;
+		this.parkingtime = LocalDateTime.now();
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "[registrationNo=" + registrationNo + ", color=" + color + "]";
+		return "[registrationNo=" + registrationNo + ", color=" + color + " , parkingtime=" + parkingtime + "]";
 	}
 	
 	/**
@@ -33,7 +37,11 @@ public abstract class Vehicle implements Externalizable
 	{
 		return registrationNo;
 	}
-	
+			
+	public LocalDateTime getParkingtime() {
+		return parkingtime;
+	}
+
 	/**
 	 * @param registrationNo
 	 *            the registrationNo to set
@@ -65,6 +73,7 @@ public abstract class Vehicle implements Externalizable
 	{
 		out.writeObject(getRegistrationNo());
 		out.writeObject(getColor());
+		out.writeObject(parkingtime);
 	}
 	
 	@Override

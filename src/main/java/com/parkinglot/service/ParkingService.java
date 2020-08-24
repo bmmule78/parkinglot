@@ -16,7 +16,7 @@ public interface ParkingService extends AbstractService
 	
 	public Optional<Integer> park(int level, Vehicle vehicle) throws ParkingException;
 	
-	public void unPark(int level, int slotNumber) throws ParkingException;
+	public void unPark(int level, int slotNumber, int hours) throws ParkingException;
 	
 	public void getStatus(int level) throws ParkingException;
 	

@@ -46,7 +46,8 @@ public class RequestProcessor implements AbstractProcessor
 				try
 				{
 					int slotNumber = Integer.parseInt(inputs[1]);
-					parkingService.unPark(level, slotNumber);
+					int hours = Integer.parseInt(inputs[2]);					
+					parkingService.unPark(level, slotNumber,hours);
 				}
 				catch (NumberFormatException e)
 				{

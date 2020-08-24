@@ -84,15 +84,16 @@ public class ParkingServiceImpl implements ParkingService
 	}
 	
 	@Override
-	public void unPark(int level, int slotNumber) throws ParkingException
+	public void unPark(int level, int slotNumber, int hours) throws ParkingException
 	{
 		lock.writeLock().lock();
 		validateParkingLot();
+		int parkingFees  = calculateParkingFees(hours);
 		try
 		{
 			
 			if (dataManager.leaveCar(level, slotNumber))
-				System.out.println("Slot number " + slotNumber + " is free");
+				System.out.println("Slot number " + slotNumber + " is free with charge " + parkingFees);
 			else
 				System.out.println("Slot number is Empty Already.");
 		}
@@ -225,6 +226,16 @@ public class ParkingServiceImpl implements ParkingService
 			lock.readLock().unlock();
 		}
 		return value;
+	}
+	
+	private int calculateParkingFees(int hours) {
+		int parkingFees = 0;
+		if(hours <= 2) {
+			parkingFees = 10;
+		} else {
+			parkingFees = (hours * 10) - 10;
+		}
+		return parkingFees;
 	}
 	
 	@Override

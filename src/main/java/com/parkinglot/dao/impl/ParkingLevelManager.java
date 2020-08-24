@@ -1,5 +1,7 @@
 package com.parkinglot.dao.impl;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -90,6 +92,11 @@ public class ParkingLevelManager<T extends Vehicle> implements ParkingLevelDataM
 	@Override
 	public boolean leaveCar(int slotNumber)
 	{
+		//System.out.println("slotVehicleMap===>"+slotVehicleMap.get(slotNumber).get().getParkingtime());
+		//int hours  = slotVehicleMap.get(slotNumber).get().getParkingtime() - LocalDateTime.now();
+		long minutesDiff = ChronoUnit.MINUTES.between(slotVehicleMap.get(slotNumber).get().getParkingtime(), LocalDateTime.now());
+        long hoursDiff = Math.round(Math.ceil(minutesDiff/60.0));
+        //System.out.println("hoursDiff====>"+hoursDiff);
 		if (!slotVehicleMap.get(slotNumber).isPresent()) // Slot already empty
 			return false;
 		availability.incrementAndGet();

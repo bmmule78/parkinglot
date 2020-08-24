@@ -15,7 +15,7 @@ public class CommandInputMap
 	{
 		commandsParameterMap.put(Constants.CREATE_PARKING_LOT, 1);
 		commandsParameterMap.put(Constants.PARK, 2);
-		commandsParameterMap.put(Constants.LEAVE, 1);
+		commandsParameterMap.put(Constants.LEAVE, 2);
 		commandsParameterMap.put(Constants.STATUS, 0);
 		commandsParameterMap.put(Constants.REG_NUMBER_FOR_CARS_WITH_COLOR, 1);
 		commandsParameterMap.put(Constants.SLOTS_NUMBER_FOR_CARS_WITH_COLOR, 1);

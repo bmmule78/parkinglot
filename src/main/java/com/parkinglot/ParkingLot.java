@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URL;
 
 import com.parkinglot.exception.ErrorCode;
 import com.parkinglot.exception.ParkingException;
@@ -71,6 +72,9 @@ public class ParkingLot
 				}
 				case 1:// File input/output
 				{
+					//String fileName  = args[0];					
+					//ParkingLot main = new ParkingLot();
+					//File inputFile = main.getFileFromResources(fileName);
 					File inputFile = new File(args[0]);
 					try
 					{
@@ -148,4 +152,17 @@ public class ParkingLot
 				.append("\n");
 		System.out.println(buffer.toString());
 	}
+	
+	private File getFileFromResources(String fileName) {
+
+        ClassLoader classLoader = getClass().getClassLoader();
+
+        URL resource = classLoader.getResource(fileName);
+        if (resource == null) {
+            throw new IllegalArgumentException("file is not found!");
+        } else {
+            return new File(resource.getFile());
+        }
+
+    }
 }
